@@ -64,7 +64,7 @@ const About = () => {
                 <User className="w-32 h-32 text-white" />
                 {/* Uncomment this when you add your profile photo */}
                 {/* <img 
-                  src="/profile.jpg" 
+                  src="/profile.png" 
                   alt="Vikram Prasad Gupta" 
                   className="w-full h-full object-cover rounded-2xl"
                 /> */}
