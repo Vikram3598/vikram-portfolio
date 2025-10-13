@@ -32,7 +32,7 @@ const Projects = () => {
         "Integration with existing security tools"
       ],
       type: "Research Project",
-      status: "In Progress"
+      status: "Completed"
     },
     {
       title: "National Cybersecurity Strategy for Financial Sector",
@@ -48,7 +48,7 @@ const Projects = () => {
         "FSDC Findings, 9 Point ToR, OM Dated 20-09-2025"
       ],
       type: "Government Project",
-      status: "Deployed"
+      status: "In Progress"
     }
   ]
 
