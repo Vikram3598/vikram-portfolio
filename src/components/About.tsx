@@ -63,11 +63,11 @@ const About = () => {
               <div className="w-80 h-80 mx-auto bg-gradient-to-br from-cyber-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
                 <User className="w-32 h-32 text-white" />
                 {/* Uncomment this when you add your profile photo */}
-                {/* <img 
+                {<img 
                   src="/profile.png" 
                   alt="Vikram Prasad Gupta" 
                   className="w-full h-full object-cover rounded-2xl"
-                /> */}
+                />}
               </div>
               <div className="absolute -bottom-4 -right-4 bg-cyber-600 text-white p-4 rounded-xl shadow-lg">
                 <Award className="w-8 h-8" />
