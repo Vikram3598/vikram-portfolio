@@ -76,6 +76,14 @@ const Projects = () => {
       description: "Professional Certificate",
       icon: <Shield className="w-6 h-6" />,
       color: "from-cyber-500 to-cyber-600"
+    },
+    {
+      title: "AI for All",
+      issuer: "Meity & Intel",
+      date: "2025",
+      description: "Professional Certificate",
+      icon: <Shield className="w-6 h-6" />,
+      color: "from-cyber-500 to-cyber-600"
     }
   ]
 
