@@ -6,9 +6,9 @@ import { Calendar, MapPin, Building, CheckCircle } from 'lucide-react'
 const Experience = () => {
   const experiences = [
     {
-      title: "Senior Security Analyst",
+      title: "Young Professional (Cyber Security)",
       company: "Department of Economic Affairs, Government of India",
-      location: "New Delhi, India",
+      location: "North Block, New Delhi, India",
       period: "2022 - Present",
       type: "Government",
       description: "Leading cybersecurity initiatives and infrastructure security for government financial systems.",
