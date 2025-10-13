@@ -8,7 +8,7 @@ const About = () => {
     {
       icon: <GraduationCap className="w-6 h-6" />,
       title: "Education",
-      description: "M.Tech in Computer Science & Engineering",
+      description: "M.Sc in Computer Science (2021-2023)",
       detail: "Advanced studies in cybersecurity and system architecture"
     },
     {
