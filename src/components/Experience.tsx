@@ -9,7 +9,7 @@ const Experience = () => {
       title: "Young Professional (Cyber Security)",
       company: "Department of Economic Affairs, Government of India",
       location: "North Block, New Delhi, India",
-      period: "2022 - Present",
+      period: "2024 - Present",
       type: "Government",
       description: "Leading cybersecurity initiatives and infrastructure security for government financial systems.",
       achievements: [
@@ -19,14 +19,14 @@ const Experience = () => {
         "Led vulnerability assessment projects for critical infrastructure",
         "Collaborated with inter-departmental teams on security compliance"
       ],
-      technologies: ["SIEM Tools", "Linux", "Python", "Network Security", "Compliance Frameworks"],
+      technologies: ["SIEM Tools", "Linux", "Python", "Network Security", "Compliance Frameworks","AI/ML"],
       color: "from-blue-500 to-blue-600"
     },
     {
-      title: "IT Infrastructure Specialist",
+      title: "Associate IT Infrastructure Specialist",
       company: "Various Private Sector Projects",
-      location: "New Delhi, India",
-      period: "2021 - 2022",
+      location: "Gurgaon, Haryana, India",
+      period: "2022 - 2024",
       type: "Private",
       description: "Provided cybersecurity consulting and infrastructure security solutions for private organizations.",
       achievements: [
@@ -53,7 +53,7 @@ const Experience = () => {
         "Contributed to open-source security projects",
         "Mentored junior students in cybersecurity fundamentals"
       ],
-      technologies: ["Python", "Security Research", "Automation", "Open Source"],
+      technologies: ["Python", "Security Research", "Automation", "Open Source","Overleaf LaTeX", "AI/ML"],
       color: "from-cyber-500 to-cyber-600"
     }
   ]
