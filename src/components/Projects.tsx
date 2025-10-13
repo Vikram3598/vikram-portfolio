@@ -9,7 +9,8 @@ const Projects = () => {
       title: "Child Tracking Security Application",
       description: "Comprehensive security framework for child safety applications with real-time monitoring and threat detection capabilities.",
       image: "🔒",
-      technologies: ["Python", "Security Frameworks", "Real-time Monitoring", "Threat Detection"],
+      technologies: ["Android","Xml", "JAVA", "Real-time Monitoring", "Threat Detection"],
+      Plateform_Used: ["Android Stdio"],
       features: [
         "Real-time location tracking with encrypted data transmission",
         "Advanced threat detection algorithms",
