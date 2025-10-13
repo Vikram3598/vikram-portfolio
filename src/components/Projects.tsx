@@ -35,15 +35,17 @@ const Projects = () => {
       status: "In Progress"
     },
     {
-      title: "Financial Security Framework",
-      description: "Comprehensive security framework for government financial systems with enhanced compliance and monitoring capabilities.",
+      title: "National Cybersecurity Strategy for Financial Sector",
+      description: "Comprehensive Cyber Strategy Draft for financial (BFSI) sector with enhanced compliance and monitoring capabilities.",
       image: "💰",
-      technologies: ["SIEM", "Compliance", "Financial Security", "Government Systems"],
+      technologies: ["SIEM", "Compliance", "Financial Security", "Government Systems", "Overleaf LaTeX"],
       features: [
         "Multi-layer security architecture",
         "Regulatory compliance automation",
         "Real-time fraud detection",
-        "Audit trail and reporting system"
+        "Audit trail and reporting system",
+        "Dedicated Short, Medium, Long term Goals",
+        "FSDC Findings, 9 Point ToR, OM Dated 20-09-2025"
       ],
       type: "Government Project",
       status: "Deployed"
