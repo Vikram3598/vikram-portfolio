@@ -139,7 +139,7 @@ const About = () => {
                 <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Core Competencies</h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "Cybersecurity", "IT Infrastructure", "SIEM Tools", "Python", "Linux Administration",
+                    "Cybersecurity", "IT Infrastructure", "SIEM Tools","AI/ML","Prompt Engeneering", "Python", "Linux Administration",
                     "Network Security", "Vulnerability Assessment", "Compliance Frameworks"
                   ].map((skill, index) => (
                     <span
