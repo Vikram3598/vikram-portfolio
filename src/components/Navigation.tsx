@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Shield, Moon, Sun, Download } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+  const { t } = useLanguage()
 
   useEffect(() => {
     setMounted(true)
@@ -23,11 +26,11 @@ const Navigation = () => {
   }
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.experience'), href: '#experience' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' }
   ]
 
   return (
@@ -67,6 +70,9 @@ const Navigation = () => {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {/* Theme Toggle */}
             {mounted && (
               <button
@@ -84,7 +90,7 @@ const Navigation = () => {
               className="hidden md:flex items-center space-x-2 bg-cyber-600 hover:bg-cyber-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 cyber-glow"
             >
               <Download className="w-4 h-4" />
-              <span>Resume</span>
+              <span>{t('hero.cta.resume')}</span>
             </a>
 
             {/* Mobile menu button */}
@@ -122,7 +128,7 @@ const Navigation = () => {
               className="flex items-center space-x-2 bg-cyber-600 hover:bg-cyber-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 w-fit"
             >
               <Download className="w-4 h-4" />
-              <span>Download Resume</span>
+              <span>{t('hero.cta.resume')}</span>
             </a>
           </div>
         </motion.div>
