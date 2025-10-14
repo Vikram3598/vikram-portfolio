@@ -35,16 +35,25 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission (replace with actual form handling)
     try {
-      // Here you would integrate with your preferred form service
-      // Examples: Formspree, Netlify Forms, EmailJS, etc.
-      //await new Promise(resolve => setTimeout(resolve, 2000))
       // Send form data to Formspree endpoint
       const response = await fetch('https://formspree.io/f/xzzjkwvz', {
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+      }
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
