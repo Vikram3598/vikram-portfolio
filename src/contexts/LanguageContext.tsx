@@ -34,7 +34,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const useLanguage = () => {
   const context = useContext(LanguageContext)
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
+    // Instead of throwing error, provide fallback
+    console.warn('useLanguage used outside LanguageProvider, using fallback')
+    return {
+      locale: 'en' as Locale,
+      setLocale: () => {},
+      t: (key: string) => key
+    }
   }
   return context
 }
@@ -43,11 +49,24 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocale] = useState<Locale>('en')
 
   const t = (key: string): string => {
-    return translations[locale][key as keyof typeof translations['en']] || key
+    const keys = key.split('.')
+    let value: any = translations[locale]
+    
+    for (const k of keys) {
+      value = value?.[k]
+    }
+    
+    return value || key
+  }
+
+  const value = {
+    locale,
+    setLocale,
+    t
   }
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )
