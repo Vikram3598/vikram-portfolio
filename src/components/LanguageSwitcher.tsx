@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Languages, ChevronDown } from 'lucide-react';
 
 const LanguageSwitcher = () => {
-  const [locale, setLocale] = useState<'en' | 'hi'>('en');
+  const { locale, setLocale } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const localeNames = {
@@ -12,12 +13,9 @@ const LanguageSwitcher = () => {
     hi: 'हिन्दी'
   };
 
-  
   const handleLanguageChange = (newLocale: 'en' | 'hi') => {
     setLocale(newLocale);
     setIsOpen(false);
-    // For now, just show an alert - we'll connect to context later
-    alert(`Language changed to: ${localeNames[newLocale]}`);
   };
 
   return (
