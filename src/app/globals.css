@@ -71,7 +71,7 @@ body {
   overflow: hidden;
   border-right: 3px solid #22c55e;
   white-space: nowrap;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end 5, hide-cursor 0.1s 4s forwards;
 }
 
 @keyframes typing {
@@ -89,5 +89,11 @@ body {
   }
   50% {
     border-color: #22c55e;
+  }
+}
+
+@keyframes hide-cursor {
+  to {
+    border-right-color: transparent;
   }
 }
