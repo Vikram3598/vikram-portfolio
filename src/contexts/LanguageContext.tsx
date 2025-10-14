@@ -12,20 +12,32 @@ interface LanguageContextType {
 
 const translations = {
   en: {
-    'nav.about': 'About',
-    'nav.experience': 'Experience',
-    'nav.projects': 'Projects', 
-    'nav.skills': 'Skills',
-    'nav.contact': 'Contact',
-    'hero.cta.resume': 'Download Resume'
+    nav: {
+      about: 'About',
+      experience: 'Experience',
+      projects: 'Projects',
+      skills: 'Skills',
+      contact: 'Contact'
+    },
+    hero: {
+      cta: {
+        resume: 'Download Resume'
+      }
+    }
   },
   hi: {
-    'nav.about': 'परिचय',
-    'nav.experience': 'अनुभव', 
-    'nav.projects': 'प्रोजेक्ट्स',
-    'nav.skills': 'कौशल',
-    'nav.contact': 'संपर्क',
-    'hero.cta.resume': 'रेज्यूमे डाउनलोड करें'
+    nav: {
+      about: 'परिचय',
+      experience: 'अनुभव',
+      projects: 'प्रोजेक्ट्स',
+      skills: 'कौशल',
+      contact: 'संपर्क'
+    },
+    hero: {
+      cta: {
+        resume: 'रेज्यूमे डाउनलोड करें'
+      }
+    }
   }
 }
 
@@ -34,7 +46,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const useLanguage = () => {
   const context = useContext(LanguageContext)
   if (!context) {
-    // Provide safe fallback instead of throwing error
     return {
       locale: 'en' as Locale,
       setLocale: () => {},
@@ -48,14 +59,23 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocale] = useState<Locale>('en')
 
   const t = (key: string): string => {
-    const keys = key.split('.')
-    let value: any = translations[locale]
-    
-    for (const k of keys) {
-      value = value?.[k]
+    try {
+      const keys = key.split('.')
+      let value: any = translations[locale]
+      
+      for (const k of keys) {
+        if (value && typeof value === 'object') {
+          value = value[k]
+        } else {
+          return key // Return original key if path doesn't exist
+        }
+      }
+      
+      return typeof value === 'string' ? value : key
+    } catch (error) {
+      console.warn('Translation error for key:', key)
+      return key
     }
-    
-    return value || key
   }
 
   const contextValue = {
