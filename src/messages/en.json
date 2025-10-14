@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Vikram",
+    "title": "Cybersecurity Professional",
+    "description": "Protecting digital assets through advanced cybersecurity strategies, threat analysis, and security implementations for government and private sector organizations.",
+    "cta": {
+      "resume": "Download Resume",
+      "contact": "Get In Touch"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Cybersecurity Expert & Technology Leader",
+    "description": "With expertise spanning cybersecurity operations, threat analysis, and security architecture, I specialize in developing comprehensive security strategies for financial sectors and government organizations. My approach combines cutting-edge technology with practical implementation to deliver robust cybersecurity solutions.",
+    "highlights": {
+      "title": "Key Expertise",
+      "items": [
+        "Advanced Threat Detection & Response",
+        "Security Architecture & Implementation",
+        "Financial Sector Cybersecurity Compliance",
+        "Government Security Policy Development",
+        "Penetration Testing & Ethical Hacking",
+        "Security Operations Center (SOC) Management"
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "degree": "M.Sc Computer Science",
+      "university": "University",
+      "achievements": [
+        "GATE CSE-2024 Qualified",
+        "UGC NET-2024 Qualified",
+        "Research Focus: Advanced Cybersecurity Operations"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "Track Record of Cybersecurity Excellence",
+    "positions": [
+      {
+        "title": "Cybersecurity Consultant",
+        "company": "Government of India",
+        "period": "2024 - Present",
+        "location": "New Delhi, India",
+        "type": "Government Project",
+        "description": "Leading the development of National Cybersecurity Strategy for the financial sector, focusing on BFSI compliance and security framework implementation.",
+        "achievements": [
+          "Developed comprehensive cybersecurity framework for financial sector",
+          "Implemented multi-layer security architecture",
+          "Established regulatory compliance automation systems",
+          "Created advanced fraud detection protocols"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Showcase of cybersecurity projects spanning government, research, and private sector implementations.",
+    "certifications": {
+      "title": "Professional Certifications",
+      "subtitle": "Industry-recognized certifications validating expertise in cybersecurity and computer science."
+    },
+    "accomplishments": {
+      "title": "Academic Accomplishments",
+      "subtitle": "National-level academic achievements demonstrating excellence in computer science and engineering."
+    },
+    "cta": {
+      "title": "Interested in Cybersecurity Solutions?",
+      "description": "Let's discuss how I can help secure your organization's digital assets with cutting-edge cybersecurity strategies and implementations.",
+      "button": "Start a Conversation"
+    }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Comprehensive expertise across cybersecurity domains",
+    "categories": {
+      "cybersecurity": "Cybersecurity & Compliance",
+      "technical": "Technical Skills",
+      "tools": "Security Tools & Platforms",
+      "certifications": "Certifications & Training"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to discuss your cybersecurity needs? Let's connect and explore how I can help secure your digital assets.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "info": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "error": "Failed to send message. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "description": "Cybersecurity Professional specializing in advanced threat detection, security architecture, and digital asset protection."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "academicAchievement": "Academic Achievement"
+  }
+}
