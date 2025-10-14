@@ -10,7 +10,6 @@ interface LanguageContextType {
   t: (key: string) => string
 }
 
-
 const translations = {
   en: {
     'nav.about': 'About',
