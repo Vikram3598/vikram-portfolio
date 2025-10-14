@@ -54,20 +54,13 @@ const Projects = () => {
 
   const certifications = [
     {
-      title: "GATE CSE-2024",
-      issuer: "Government of India",
-      date: "2024",
-      description: "Computer Science & Engineering",
-      icon: <Award className="w-6 h-6" />,
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      title: "UGC NET-2024",
-      issuer: "University Grants Commission",
-      date: "2024", 
-      description: "Computer Science & Applications",
-      icon: <FileText className="w-6 h-6" />,
-      color: "from-purple-500 to-purple-600"
+      title: "Certified Ethical Hacker CEHv13",
+      issuer: "EC-Council",
+      date: "In Progress",
+      description: "Advanced Ethical Hacking & Penetration Testing",
+      icon: <Shield className="w-6 h-6" />,
+      color: "from-red-500 to-red-600",
+      status: "in-progress"
     },
     {
       title: "Google Cybersecurity Professional",
@@ -75,7 +68,8 @@ const Projects = () => {
       date: "2023",
       description: "Professional Certificate",
       icon: <Shield className="w-6 h-6" />,
-      color: "from-cyber-500 to-cyber-600"
+      color: "from-cyber-500 to-cyber-600",
+      status: "completed"
     },
     {
       title: "AI for All",
@@ -83,7 +77,29 @@ const Projects = () => {
       date: "2025",
       description: "Professional Certificate",
       icon: <Shield className="w-6 h-6" />,
-      color: "from-cyber-500 to-cyber-600"
+      color: "from-green-500 to-green-600",
+      status: "completed"
+    }
+  ]
+
+  const accomplishments = [
+    {
+      title: "GATE CSE-2024",
+      issuer: "Government of India",
+      date: "2024",
+      description: "Computer Science & Engineering - National Level Examination",
+      icon: <Award className="w-6 h-6" />,
+      color: "from-blue-500 to-blue-600",
+      type: "Academic Achievement"
+    },
+    {
+      title: "UGC NET-2024",
+      issuer: "University Grants Commission",
+      date: "2024", 
+      description: "Computer Science & Applications - National Eligibility Test",
+      icon: <FileText className="w-6 h-6" />,
+      color: "from-purple-500 to-purple-600",
+      type: "Academic Achievement"
     }
   ]
 
@@ -202,8 +218,15 @@ const Projects = () => {
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br ${cert.color} rounded-2xl transition-opacity duration-300`}></div>
               
               <div className="relative z-10">
-                <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${cert.color} text-white mb-4`}>
-                  {cert.icon}
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${cert.color} text-white`}>
+                    {cert.icon}
+                  </div>
+                  {cert.status === 'in-progress' && (
+                    <div className="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-medium">
+                      In Progress
+                    </div>
+                  )}
                 </div>
                 
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
@@ -214,12 +237,72 @@ const Projects = () => {
                   {cert.issuer}
                 </p>
                 
-                <p className="text-cyber-600 font-semibold mb-3">
+                <p className={`font-semibold mb-3 ${cert.status === 'in-progress' ? 'text-yellow-600 dark:text-yellow-400' : 'text-cyber-600'}`}>
                   {cert.date}
                 </p>
                 
                 <p className="text-sm text-slate-600 dark:text-slate-300">
                   {cert.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Academic Accomplishments Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 mt-20"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            Academic <span className="text-blue-600">Accomplishments</span>
+          </h3>
+          <p className="text-lg text-slate-600 dark:text-slate-400">
+            National-level academic achievements demonstrating excellence in computer science and engineering.
+          </p>
+        </motion.div>
+
+        {/* Accomplishments Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {accomplishments.map((accomplishment, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-600 hover:shadow-xl transition-all duration-300 group"
+            >
+              {/* Background Gradient */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${accomplishment.color} rounded-2xl transition-opacity duration-300`}></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${accomplishment.color} text-white`}>
+                    {accomplishment.icon}
+                  </div>
+                  <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-medium">
+                    {accomplishment.type}
+                  </div>
+                </div>
+                
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  {accomplishment.title}
+                </h4>
+                
+                <p className="text-slate-600 dark:text-slate-400 mb-1">
+                  {accomplishment.issuer}
+                </p>
+                
+                <p className="text-blue-600 dark:text-blue-400 font-semibold mb-3">
+                  {accomplishment.date}
+                </p>
+                
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  {accomplishment.description}
                 </p>
               </div>
             </motion.div>
