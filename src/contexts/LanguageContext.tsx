@@ -34,8 +34,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const useLanguage = () => {
   const context = useContext(LanguageContext)
   if (!context) {
-    // Instead of throwing error, provide fallback
-    console.warn('useLanguage used outside LanguageProvider, using fallback')
+    // Provide safe fallback instead of throwing error
     return {
       locale: 'en' as Locale,
       setLocale: () => {},
@@ -59,14 +58,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return value || key
   }
 
-  const value = {
+  const contextValue = {
     locale,
     setLocale,
     t
   }
 
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   )
