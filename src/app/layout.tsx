@@ -4,7 +4,9 @@ import './globals.css'
 import ThemeProvider from '@/components/ThemeProvider'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
+
 const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: 'Vikram Prasad Gupta - Cybersecurity Professional',
