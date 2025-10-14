@@ -12,6 +12,7 @@ const LanguageSwitcher = () => {
     hi: 'हिन्दी'
   };
 
+  
   const handleLanguageChange = (newLocale: 'en' | 'hi') => {
     setLocale(newLocale);
     setIsOpen(false);
