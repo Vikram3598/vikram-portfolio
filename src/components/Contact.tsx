@@ -39,7 +39,9 @@ const Contact = () => {
     try {
       // Here you would integrate with your preferred form service
       // Examples: Formspree, Netlify Forms, EmailJS, etc.
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      //await new Promise(resolve => setTimeout(resolve, 2000))
+      // Send form data to Formspree endpoint
+      const response = await fetch('https://formspree.io/f/xzzjkwvz', {
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
