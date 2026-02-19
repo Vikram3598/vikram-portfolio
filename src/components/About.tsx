@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { GraduationCap, Award, MapPin, User } from 'lucide-react'
+import { GraduationCap, Award, MapPin } from 'lucide-react'
 
 const About = () => {
   const achievements = [
@@ -62,7 +62,6 @@ const About = () => {
             {/* Profile Image Placeholder */}
             <div className="relative">
               <div className="w-80 h-80 mx-auto bg-gradient-to-br from-cyber-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                <User className="w-32 h-32 text-white" />
                 {/* Uncomment this when you add your profile photo */}
                 <Image
                   src="/profile.png"
