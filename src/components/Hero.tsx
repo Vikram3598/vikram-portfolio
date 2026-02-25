@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { ChevronDown, Download, Mail, Shield, Lock, Eye, Terminal } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Hero = () => {
+  const { t } = useLanguage()
   const scrollToNext = () => {
     const element = document.querySelector('#about')
     if (element) {
@@ -12,9 +14,8 @@ const Hero = () => {
   }
 
   const downloadResume = () => {
-    // Create a link element and trigger download
     const link = document.createElement('a')
-    link.href = '/resume.pdf' // Make sure to add your resume PDF to the public folder
+    link.href = '/resume.pdf'
     link.download = 'Vikram_Prasad_Gupta_Resume.pdf'
     link.click()
   }
@@ -63,8 +64,8 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6"
           >
-            Hi, I&apos;m{' '}
-            <span className="gradient-text">Vikram</span>
+            {t('hero.greeting')}{' '}
+            <span className="gradient-text">{t('hero.name')}</span>
           </motion.h1>
 
           {/* Typing Animation */}
@@ -75,7 +76,7 @@ const Hero = () => {
             className="text-2xl md:text-3xl text-slate-700 dark:text-slate-300 mb-8"
           >
             <span className="typing-animation">
-              Cybersecurity Professional
+              {t('hero.title')}
             </span>
           </motion.div>
 
@@ -86,12 +87,7 @@ const Hero = () => {
             transition={{ delay: 0.8 }}
             className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed"
           >
-            Specialized in{' '}
-            <span className="text-cyber-600 font-semibold">IT Infrastructure Security</span>,{' '}
-            <span className="text-blue-600 font-semibold">SIEM Implementation</span>, and{' '}
-            <span className="text-purple-600 font-semibold">Government Compliance</span>.
-            <br />
-            Protecting digital assets with cutting-edge security solutions.
+            {t('hero.description')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -106,7 +102,7 @@ const Hero = () => {
               className="flex items-center space-x-2 bg-cyber-600 hover:bg-cyber-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 cyber-glow"
             >
               <Mail className="w-5 h-5" />
-              <span>Get In Touch</span>
+              <span>{t('hero.cta.contact')}</span>
             </button>
             
             <button
@@ -114,7 +110,7 @@ const Hero = () => {
               className="flex items-center space-x-2 bg-transparent border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-cyber-600 hover:text-cyber-600 dark:hover:text-cyber-400 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
             >
               <Download className="w-5 h-5" />
-              <span>Download Resume</span>
+              <span>{t('hero.cta.resume')}</span>
             </button>
           </motion.div>
 
@@ -141,7 +137,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+          {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -152,7 +148,7 @@ const Hero = () => {
           onClick={scrollToNext}
           className="flex flex-col items-center space-y-2 text-slate-500 dark:text-slate-400 hover:text-cyber-600 dark:hover:text-cyber-400 transition-colors duration-300"
         >
-          <span className="text-sm">Scroll Down</span>
+          <span className="text-sm">{t('common.scrollDown') || 'Scroll Down'}</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}

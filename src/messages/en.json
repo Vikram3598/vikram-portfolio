@@ -123,6 +123,12 @@
     "previous": "Previous",
     "inProgress": "In Progress",
     "completed": "Completed",
-    "academicAchievement": "Academic Achievement"
+    "academicAchievement": "Academic Achievement",
+    "scrollDown": "Scroll Down",
+    "yearsExperience": "Years Experience",
+    "securityProjects": "Security Projects",
+    "certifications": "Certifications",
+    "location": "Location",
+    "securityAssessments": "Security Assessments"
   }
 }

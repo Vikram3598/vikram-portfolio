@@ -1,20 +1,43 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Menu, X, Shield, Moon, Sun, Download } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Shield, Moon, Sun, Download, Layout, ChevronDown } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useLayout } from '@/contexts/LayoutContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
+type LayoutType = 'cyber' | 'ocean' | 'forest' | 'sunset' | 'minimal'
+
+const layouts: { value: LayoutType; label: string; color: string }[] = [
+  { value: 'cyber', label: 'Cyber', color: 'bg-green-500' },
+  { value: 'ocean', label: 'Ocean', color: 'bg-cyan-500' },
+  { value: 'forest', label: 'Forest', color: 'bg-green-600' },
+  { value: 'sunset', label: 'Sunset', color: 'bg-orange-500' },
+  { value: 'minimal', label: 'Minimal', color: 'bg-gray-500' },
+]
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [layoutMenuOpen, setLayoutMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+  const { layout, setLayout } = useLayout()
   const { t } = useLanguage()
+  const layoutMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (layoutMenuRef.current && !layoutMenuRef.current.contains(event.target as Node)) {
+        setLayoutMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const scrollToSection = (sectionId: string) => {
@@ -70,6 +93,43 @@ const Navigation = () => {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
+            {/* Layout Switcher */}
+            <div className="relative" ref={layoutMenuRef}>
+              <button
+                onClick={() => setLayoutMenuOpen(!layoutMenuOpen)}
+                className="hidden md:flex items-center space-x-1 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-300"
+              >
+                <Layout className="w-5 h-5" />
+                <ChevronDown className={`w-4 h-4 transition-transform ${layoutMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {layoutMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute right-0 mt-2 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-1 z-50"
+                  >
+                    {layouts.map((l) => (
+                      <button
+                        key={l.value}
+                        onClick={() => {
+                          setLayout(l.value)
+                          setLayoutMenuOpen(false)
+                        }}
+                        className={`w-full flex items-center space-x-2 px-4 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors ${
+                          layout === l.value ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'
+                        }`}
+                      >
+                        <div className={`w-3 h-3 rounded-full ${l.color}`} />
+                        <span>{l.label}</span>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {/* Language Switcher */}
             <LanguageSwitcher />
 

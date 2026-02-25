@@ -2,23 +2,44 @@
 
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building, CheckCircle } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Experience = () => {
+  const { t } = useLanguage()
+
+  const getAchievements = (index: number): string[] => {
+    if (index === 0) {
+      const achievementsStr = t('experience.positions.0.achievements')
+      return Array.isArray(achievementsStr) ? achievementsStr : [achievementsStr]
+    }
+    return [
+      "Designed secure network architectures for enterprise clients",
+      "Implemented endpoint security solutions and monitoring systems",
+      "Conducted penetration testing and security assessments",
+      "Delivered cybersecurity training to technical teams",
+      "Established incident response procedures and protocols"
+    ]
+  }
+
+  const getAchievements2 = (): string[] => {
+    return [
+      "Researched emerging cybersecurity threats and countermeasures",
+      "Developed automated security monitoring tools using Python",
+      "Published research on network security protocols",
+      "Contributed to open-source security projects",
+      "Mentored junior students in cybersecurity fundamentals"
+    ]
+  }
+
   const experiences = [
     {
-      title: "Young Professional (Cyber Security)",
-      company: "Department of Economic Affairs, Government of India",
-      location: "North Block, New Delhi, India",
-      period: "2024 - Present",
-      type: "Government",
-      description: "Leading cybersecurity initiatives and infrastructure security for government financial systems.",
-      achievements: [
-        "Implemented comprehensive SIEM solutions for financial data protection",
-        "Conducted security audits for government financial applications",
-        "Developed security protocols for sensitive financial transactions",
-        "Led vulnerability assessment projects for critical infrastructure",
-        "Collaborated with inter-departmental teams on security compliance"
-      ],
+      title: t('experience.positions.0.title'),
+      company: t('experience.positions.0.company'),
+      location: t('experience.positions.0.location'),
+      period: t('experience.positions.0.period'),
+      type: t('experience.positions.0.type'),
+      description: t('experience.positions.0.description'),
+      achievements: getAchievements(0),
       technologies: ["SIEM Tools", "Linux", "Python", "Network Security", "Compliance Frameworks","AI/ML"],
       color: "from-blue-500 to-blue-600"
     },
@@ -29,13 +50,7 @@ const Experience = () => {
       period: "2022 - 2024",
       type: "Private",
       description: "Provided cybersecurity consulting and infrastructure security solutions for private organizations.",
-      achievements: [
-        "Designed secure network architectures for enterprise clients",
-        "Implemented endpoint security solutions and monitoring systems",
-        "Conducted penetration testing and security assessments",
-        "Delivered cybersecurity training to technical teams",
-        "Established incident response procedures and protocols"
-      ],
+      achievements: getAchievements(1),
       technologies: ["Endpoint Security", "Penetration Testing", "Network Architecture", "Incident Response"],
       color: "from-purple-500 to-purple-600"
     },
@@ -46,13 +61,7 @@ const Experience = () => {
       period: "2020 - 2021",
       type: "Academic",
       description: "Focused on advanced cybersecurity research and development projects.",
-      achievements: [
-        "Researched emerging cybersecurity threats and countermeasures",
-        "Developed automated security monitoring tools using Python",
-        "Published research on network security protocols",
-        "Contributed to open-source security projects",
-        "Mentored junior students in cybersecurity fundamentals"
-      ],
+      achievements: getAchievements2(),
       technologies: ["Python", "Security Research", "Automation", "Open Source","Overleaf LaTeX", "AI/ML"],
       color: "from-cyber-500 to-cyber-600"
     }
@@ -69,10 +78,10 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Professional <span className="text-cyber-600">Experience</span>
+            {t('experience.title').split(' ')[0]} <span className="text-cyber-600">{t('experience.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            A journey through cybersecurity roles spanning government, private sector, and academic research.
+            {t('experience.subtitle')}
           </p>
         </motion.div>
 

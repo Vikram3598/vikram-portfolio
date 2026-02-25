@@ -13,8 +13,11 @@ import {
   Monitor,
   FileSearch
 } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Skills = () => {
+  const { t } = useLanguage()
+  
   const skillCategories = [
     {
       title: "Cybersecurity",
@@ -92,10 +95,10 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Technical <span className="text-cyber-600">Skills</span>
+            {t('skills.title').split(' ')[0]} <span className="text-cyber-600">{t('skills.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Comprehensive expertise in cybersecurity technologies, frameworks, and industry best practices.
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 

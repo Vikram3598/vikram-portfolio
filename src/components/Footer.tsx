@@ -15,8 +15,11 @@ import {
   Download,
   ExternalLink
 } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -233,11 +236,7 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
                 className="flex items-center space-x-2 text-slate-400 text-sm"
               >
-                <span>© {currentYear} Vikram Prasad Gupta. Made with</span>
-                <Heart className="w-4 h-4 text-red-500" />
-                <span>and</span>
-                <Shield className="w-4 h-4 text-cyber-400" />
-                <span>for cybersecurity.</span>
+                <span>© {currentYear} Vikram Prasad Gupta. {t('footer.rights')}</span>
               </motion.div>
 
               <motion.div

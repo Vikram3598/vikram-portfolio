@@ -2,32 +2,35 @@
 
 import { motion } from 'framer-motion'
 import { GraduationCap, Award, MapPin, User } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const About = () => {
+  const { t } = useLanguage()
+  
   const achievements = [
     {
       icon: <GraduationCap className="w-6 h-6" />,
-      title: "Education",
-      description: "M.Sc in Computer Science (2021-2023)",
-      detail: "Advanced studies in cybersecurity and system architecture"
+      title: t('about.education.title'),
+      description: t('about.education.degree'),
+      detail: t('about.education.achievements.2')
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: "GATE Qualified",
-      description: "GATE CSE-2024 Achievement",
-      detail: "Demonstrated excellence in Computer Science fundamentals"
+      title: "GATE",
+      description: t('about.education.achievements.0'),
+      detail: "GATE CSE"
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: "UGC NET Qualified",
-      description: "UGC NET-2024 Achievement",
-      detail: "National eligibility for academic and research positions"
+      title: "UGC NET",
+      description: t('about.education.achievements.1'),
+      detail: "National Eligibility"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
+      title: t('common.location') || "Location",
       description: "New Delhi, India",
-      detail: "Available for remote and on-site opportunities"
+      detail: "Available for remote"
     }
   ]
 
@@ -42,10 +45,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            About <span className="text-cyber-600">Me</span>
+            {t('about.title').split(' ')[0]} <span className="text-cyber-600">{t('about.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Passionate cybersecurity professional dedicated to protecting digital assets and ensuring robust security infrastructure.
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -105,41 +108,28 @@ const About = () => {
           >
             <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-600">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Professional Journey
+                {t('about.highlights.title') || 'Professional Journey'}
               </h3>
               
               <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
                 <p>
-                  As a dedicated <span className="text-cyber-600 font-semibold">cybersecurity professional</span>, 
-                  I bring a unique blend of government sector experience and private industry expertise to the field 
-                  of information security.
+                  {t('about.description').substring(0, 100)}...
                 </p>
                 
                 <p>
-                  My journey began with a strong academic foundation in Computer Science & Engineering, 
-                  enhanced by achievements in <span className="text-blue-600 font-semibold">GATE CSE-2024</span> and 
-                  <span className="text-purple-600 font-semibold"> UGC NET-2024</span>, demonstrating my commitment 
-                  to continuous learning and excellence.
+                  {t('about.education.achievements.0')} & {t('about.education.achievements.1')}
                 </p>
                 
                 <p>
-                  I specialize in <span className="text-cyber-600 font-semibold">IT Infrastructure Security</span>, 
-                  with hands-on experience in SIEM tools, vulnerability assessments, and security compliance frameworks. 
-                  My work spans from government security protocols to enterprise-level security implementations.
-                </p>
-                
-                <p>
-                  Currently, I&apos;m focused on advancing cybersecurity practices through innovative solutions, 
-                  threat detection methodologies, and secure system architectures that protect against evolving 
-                  cyber threats.
+                  {t('about.highlights.items.0')}, {t('about.highlights.items.1')}, {t('about.highlights.items.4')}
                 </p>
               </div>
 
               <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-600">
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Core Competencies</h4>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">{t('about.highlights.title')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "Cybersecurity", "IT Infrastructure", "SIEM Tools","AI/ML","Prompt Engeneering", "Python", "Linux Administration",
+                    "Cybersecurity", "IT Infrastructure", "SIEM Tools","AI/ML","Prompt Engineering", "Python", "Linux Administration",
                     "Network Security", "Vulnerability Assessment", "Compliance Frameworks"
                   ].map((skill, index) => (
                     <span
@@ -156,11 +146,11 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gradient-to-r from-cyber-500 to-cyber-600 p-6 rounded-xl text-white">
                 <div className="text-3xl font-bold">3+</div>
-                <div className="text-cyber-100">Years of Experience</div>
+                <div className="text-cyber-100">{t('common.yearsExperience')}</div>
               </div>
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl text-white">
                 <div className="text-3xl font-bold">50+</div>
-                <div className="text-blue-100">Security Assessments</div>
+                <div className="text-blue-100">{t('common.securityProjects')}</div>
               </div>
             </div>
           </motion.div>

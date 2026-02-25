@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Award, Shield, Database, Users, FileText, Star } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Projects = () => {
+  const { t } = useLanguage()
+  
   const projects = [
     {
       title: "Child Tracking Security Application",
@@ -115,10 +118,10 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Featured <span className="text-cyber-600">Projects</span>
+            {t('projects.title').split(' ')[0]} <span className="text-cyber-600">{t('projects.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Showcase of cybersecurity projects spanning government, research, and private sector implementations.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 

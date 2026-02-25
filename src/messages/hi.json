@@ -123,7 +123,13 @@
     "previous": "पिछला",
     "inProgress": "प्रगति में",
     "completed": "पूर्ण",
-    "academicAchievement": "शैक्षणिक उपलब्धि"
+    "academicAchievement": "शैक्षणिक उपलब्धि",
+    "scrollDown": "नीचे स्क्रॉल करें",
+    "yearsExperience": "वर्षों का अनुभव",
+    "securityProjects": "सुरक्षा परियोजनाएं",
+    "certifications": "प्रमाणपत्र",
+    "location": "स्थान",
+    "securityAssessments": "सुरक्षा मूल्यांकन"
   }
 }
 

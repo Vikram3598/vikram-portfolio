@@ -13,8 +13,11 @@ import {
   User,
   MessageSquare
 } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Contact = () => {
+  const { t } = useLanguage()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,10 +105,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Get In <span className="text-cyber-600">Touch</span>
+            {t('contact.title').split(' ')[0]} <span className="text-cyber-600">{t('contact.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Ready to enhance your organization&apos;s cybersecurity posture? Let&apos;s discuss how I can help protect your digital assets.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 

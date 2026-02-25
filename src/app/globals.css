@@ -6,12 +6,63 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+  --primary-color: 34, 197, 94;
+  --secondary-color: 59, 130, 246;
+  --accent-color: 118, 75, 162;
 }
 
 [data-theme="dark"] {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 15, 23, 42;
   --background-end-rgb: 30, 41, 59;
+}
+
+/* Layout: Ocean */
+[data-layout="ocean"] {
+  --primary-color: 6, 182, 212;
+  --secondary-color: 99, 102, 241;
+  --accent-color: 236, 72, 153;
+}
+
+[data-layout="ocean"][data-theme="dark"] {
+  --background-start-rgb: 8, 47, 73;
+  --background-end-rgb: 15, 32, 50;
+}
+
+/* Layout: Forest */
+[data-layout="forest"] {
+  --primary-color: 22, 163, 74;
+  --secondary-color: 234, 179, 8;
+  --accent-color: 249, 115, 22;
+}
+
+[data-layout="forest"][data-theme="dark"] {
+  --background-start-rgb: 6, 28, 18;
+  --background-end-rgb: 12, 41, 25;
+}
+
+/* Layout: Sunset */
+[data-layout="sunset"] {
+  --primary-color: 249, 115, 22;
+  --secondary-color: 236, 72, 153;
+  --accent-color: 168, 85, 247;
+}
+
+[data-layout="sunset"][data-theme="dark"] {
+  --background-start-rgb: 49, 10, 10;
+  --background-end-rgb: 30, 10, 10;
+}
+
+/* Layout: Minimal */
+[data-layout="minimal"] {
+  --primary-color: 107, 114, 128;
+  --secondary-color: 75, 85, 99;
+  --accent-color: 55, 65, 81;
+}
+
+[data-layout="minimal"][data-theme="dark"] {
+  --background-start-rgb: 17, 24, 39;
+  --background-end-rgb: 17, 24, 39;
 }
 
 body {
@@ -32,12 +83,12 @@ body {
 }
 
 .cyber-glow {
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 0 20px rgba(var(--primary-color), 0.3);
   transition: all 0.3s ease;
 }
 
 .cyber-glow:hover {
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 30px rgba(var(--primary-color), 0.5);
 }
 
 .matrix-bg {
@@ -53,8 +104,8 @@ body {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 25% 25%, rgba(var(--primary-color), 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(var(--secondary-color), 0.1) 0%, transparent 50%);
   animation: pulse 4s ease-in-out infinite alternate;
 }
 
@@ -69,7 +120,7 @@ body {
 
 .typing-animation {
   overflow: hidden;
-  border-right: 3px solid #22c55e;
+  border-right: 3px solid rgb(var(--primary-color));
   white-space: nowrap;
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end 5, hide-cursor 0.1s 4s forwards;
 }
@@ -88,12 +139,42 @@ body {
     border-color: transparent;
   }
   50% {
-    border-color: #22c55e;
+    border-color: rgb(var(--primary-color));
   }
 }
 
 @keyframes hide-cursor {
   to {
     border-right-color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: rgb(var(--primary-color));
+  }
+  .bg-primary {
+    background-color: rgb(var(--primary-color));
+  }
+  .text-secondary {
+    color: rgb(var(--secondary-color));
+  }
+  .bg-secondary {
+    background-color: rgb(var(--secondary-color));
+  }
+  .text-accent {
+    color: rgb(var(--accent-color));
+  }
+  .bg-accent {
+    background-color: rgb(var(--accent-color));
+  }
+  .hover\:text-primary:hover {
+    color: rgb(var(--primary-color));
+  }
+  .hover\:bg-primary:hover {
+    background-color: rgb(var(--primary-color));
+  }
+  .ring-primary {
+    --tw-ring-color: rgb(var(--primary-color));
   }
 }

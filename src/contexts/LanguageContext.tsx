@@ -1,8 +1,12 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import enTranslations from '../messages/en.json'
+import hiTranslations from '../messages/hi.json'
 
 type Locale = 'en' | 'hi'
+
+type Translations = typeof enTranslations
 
 interface LanguageContextType {
   locale: Locale
@@ -10,35 +14,9 @@ interface LanguageContextType {
   t: (key: string) => string
 }
 
-const translations = {
-  en: {
-    nav: {
-      about: 'About',
-      experience: 'Experience',
-      projects: 'Projects',
-      skills: 'Skills',
-      contact: 'Contact'
-    },
-    hero: {
-      cta: {
-        resume: 'Download Resume'
-      }
-    }
-  },
-  hi: {
-    nav: {
-      about: 'परिचय',
-      experience: 'अनुभव',
-      projects: 'प्रोजेक्ट्स',
-      skills: 'कौशल',
-      contact: 'संपर्क'
-    },
-    hero: {
-      cta: {
-        resume: 'रेज्यूमे डाउनलोड करें'
-      }
-    }
-  }
+const translations: Record<Locale, Translations> = {
+  en: enTranslations,
+  hi: hiTranslations
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -58,6 +36,18 @@ export const useLanguage = () => {
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocale] = useState<Locale>('en')
 
+  useEffect(() => {
+    const savedLocale = localStorage.getItem('locale') as Locale
+    if (savedLocale && (savedLocale === 'en' || savedLocale === 'hi')) {
+      setLocale(savedLocale)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+    localStorage.setItem('locale', locale)
+  }, [locale])
+
   const t = (key: string): string => {
     try {
       const keys = key.split('.')
@@ -67,13 +57,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         if (value && typeof value === 'object') {
           value = value[k]
         } else {
-          return key // Return original key if path doesn't exist
+          return key
         }
       }
       
       return typeof value === 'string' ? value : key
     } catch (error) {
-      console.warn('Translation error for key:', key)
       return key
     }
   }
